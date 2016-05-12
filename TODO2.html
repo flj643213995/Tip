@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html>
+
+    <!-- 可以将显示内容的框设置成五角星的，在空白的位置加入一个日历 -->
+
+<head>
+    <meta charset="utf-8">
+    <style media="screen">
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        #header {
+            padding: 10px 40px;
+            width: 100%;
+            height: 70px;
+            background-color: rgb(160, 167, 160);
+            overflow: hidden;
+            position: fixed;
+            top: 0;
+        }
+
+        #footer {
+            width: 100%;
+            position: fixed;
+            bottom: 0;
+            padding: 10px 40px;
+            background-color: rgb(160, 167, 160);
+            text-align: center;
+        }
+
+        h3 {
+            padding-left: 200px;
+        }
+
+        .content{
+            margin-top: 90px;
+            width: 80%;
+            float: left;
+            background-color: rgba(85, 237, 233, 0.22);
+            height: 550px;
+            border-radius: 0 100px 100px 0;
+        }
+
+        .in{
+            padding: 60px 50px;
+            padding-left: 270px;
+        }
+
+        .in input{
+            width: 70%;
+            height: 2em;
+        }
+
+        .l{
+            margin: 20px 150px;
+            padding: 0.5em;
+            background-color: #4a4;
+            border-radius: 1em 0 1em 0;
+            list-style: none;
+            text-align: center;
+        }
+
+        .l:hover{
+            background-color: rgba(231, 251, 0, 0.9);
+            cursor: pointer;
+        }
+
+
+        .instruction{
+            margin-top: 90px;
+            width: 20%;
+            height: 550px;
+            float: left;
+            background-color:#eee;
+            border-radius: 100px 0 0 100px;
+        }
+
+        .instruction li{
+            font-size: 1.5em;
+            font-style: oblique;
+            text-align: center;
+            list-style: none;
+            padding: 70px;
+        }
+
+        .instruction pre{
+            padding: 10px 20px auto 20px;
+            font-style: italic;
+            text-align: center;
+        }
+
+        .done{
+            background-color: #eee;
+            color: #aaa;
+            text-decoration: line-through;
+        }
+
+        .done:hover{
+            background-color: #eee;
+            color: #aaa;
+            text-decoration: line-through;
+        }
+    </style>
+    <script src="./jquery-2.2.3.min.js" charset="utf-8"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+
+            function addTodo() {
+                var li = $('<li></li>').text($('#inp').val()).attr("class","l").slideToggle(1000);
+                $('#inp').val('');
+                li.click(function () {
+                    $(this).toggleClass('done');
+                });
+                li.dblclick(function () {
+                    $(this).fadeOut(2000);
+                });
+                $('#lili').append(li);
+            }
+
+            $('button').click(addTodo);
+
+            $('#inp').keydown(function (e) {
+                if (e.keyCode == 13) {
+                    addTodo();
+                }
+            });
+        });
+
+    </script>
+    <title>桌面便签</title>
+</head>
+
+<body>
+    <header id="header">
+        <h1>骚年，今天你计划了吗？</h1>
+        <h3>———好的计划就是成功的一半！</h3>
+    </header>
+
+    <div class="content">
+        <div class="in">
+            <input id="inp" placeholder="请输入您的计划">
+            <button type="button" name="button">add</button>
+        </div>
+
+        <div>
+            <ul id="lili">
+                <li class="l">这是一个栗子，看看火候怎么样</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="instruction">
+        <ul>
+            <li>功能介绍</li>
+        </ul>
+        <pre>
+    这是一个桌面便签小应
+用，您可以添加您这一天的
+计划，从而使您利用好您的
+每一分钟时间。您可以通过
+单击已经生成的便签来改变
+您计划的完成与否，通过双
+击来删除已经完成的计划。
+    注：回车也可以将您写
+的内容添加到计划当中的哟！
+        </pre>
+    </div>
+
+    <footer id="footer">Copyright (c) 2016 Copyright Holder All Rights Reserved.</footer>
+</body>
+
+</html>
